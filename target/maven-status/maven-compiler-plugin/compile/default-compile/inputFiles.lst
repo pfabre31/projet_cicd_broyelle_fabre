@@ -1,0 +1,10 @@
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/MenuServerApplication.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/repository/DishRepository.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/model/Menu.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/controller/MenuController.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/dto/MenuDto.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/service/ListMenuService.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/repository/MenuRepository.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/model/Dish.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/service/CreateMenuService.java
+/home/paul/Documents/FAC/M2/CICD/project-2.0.1-src/src/main/java/com/cicdlectures/menuserver/dto/DishDto.java
