@@ -2,3 +2,5 @@ target/
 .idea/
 libs/
 .~lock.README.md#
+cicd.iml
+com.cicdlectures.menuserver.iml
