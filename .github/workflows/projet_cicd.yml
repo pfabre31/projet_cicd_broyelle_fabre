@@ -1,6 +1,9 @@
 name: ci
-on: [push]
-
+on:
+  pull_request:
+  push:
+    branches:
+      - test_dans_ci
 jobs:
   compile:
     runs-on: ubuntu-20.04
