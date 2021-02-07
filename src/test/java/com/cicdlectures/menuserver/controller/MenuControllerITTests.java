@@ -1,42 +1,30 @@
 package com.cicdlectures.menuserver.controller;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.net.URL;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Arrays;
-
+import com.cicdlectures.menuserver.dto.DishDto;
+import com.cicdlectures.menuserver.dto.MenuDto;
+import com.cicdlectures.menuserver.model.Dish;
+import com.cicdlectures.menuserver.model.Menu;
+import com.cicdlectures.menuserver.repository.DishRepository;
+import com.cicdlectures.menuserver.repository.MenuRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.http.*;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.MediaType;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
-import com.cicdlectures.menuserver.repository.DishRepository;
-import com.cicdlectures.menuserver.repository.MenuRepository;
-import com.cicdlectures.menuserver.model.Dish;
-import com.cicdlectures.menuserver.model.Menu;
-import com.cicdlectures.menuserver.dto.MenuDto;
-import com.cicdlectures.menuserver.dto.DishDto;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class MenuControllerIT {
+public class MenuControllerITTests {
 
   @LocalServerPort
   private int port;
@@ -81,7 +69,7 @@ public class MenuControllerIT {
 
     MenuDto[] gotMenus = response.getBody();
 
-    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    assertEquals(HttpStatus.OK, response.getStatusCode());
     assertArrayEquals(wantMenus, gotMenus);
   }
 
@@ -100,7 +88,6 @@ public class MenuControllerIT {
 
     ResponseEntity<MenuDto> response = this.template.postForEntity(url.toString(), request, MenuDto.class);
 
-    // LOOOOOOL. This is fine.
-    assertTrue(false);
+    assertEquals(wantMenu, response.getBody());
   }
 }
