@@ -1,0 +1,28 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  compile:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run : sudo apt --assume-yes install maven
+      - run : mvn compile
+
+  test_unit:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn test
+
+  test_int:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - run: mvn verify
+
