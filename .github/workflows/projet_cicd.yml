@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - '*'
 jobs:
   compile:
     runs-on: ubuntu-20.04
@@ -27,4 +29,45 @@ jobs:
       - run: mvn verify
       - run: sudo apt --assume-yes install cowsay
       - run: cowsay -f dragon "Quand 900 ans comme moi tu auras, moins en forme tu seras"
+
+
+  release:
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt --assume-yes install maven
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Trying to attach jar file to release
+          draft: false
+          prerelease: false
+
+
+      - name : package
+        run : mvn package
+      - name : check
+        run : ls target
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./target/*.jar
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
+
+
+
+
+
 
