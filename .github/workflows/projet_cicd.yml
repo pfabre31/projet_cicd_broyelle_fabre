@@ -52,7 +52,7 @@ jobs:
 
 
       - name : package
-        run : mvn install -Dexternal.version=$(git describe --tags --always --dirty=dirty)
+        run : mvn package
       - name : check
         run : ls target
       - name: Upload binaries to release
