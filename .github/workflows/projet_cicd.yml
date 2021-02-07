@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - '*'
 jobs:
   compile:
     runs-on: ubuntu-20.04
