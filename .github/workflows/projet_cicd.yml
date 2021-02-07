@@ -1,0 +1,8 @@
+name: ci
+on: [push]
+jobs:
+  compile:
+    runs-on: ubuntu-20.04
+    steps:
+      - run : sudo apt --assume-yes install maven
+      - run : mvn compile -
