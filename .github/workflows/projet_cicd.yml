@@ -51,6 +51,7 @@ jobs:
             Trying to attach jar file to release
           draft: false
           prerelease: false
+      - run : ls
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
