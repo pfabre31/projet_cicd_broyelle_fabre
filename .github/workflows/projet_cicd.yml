@@ -25,4 +25,6 @@ jobs:
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
       - run: mvn verify
+      - run: sudo apt --assume-yes install cowsay
+      - run: cowsay -f dragon "Quand 900 ans comme moi tu auras, moins en forme tu seras"
 
