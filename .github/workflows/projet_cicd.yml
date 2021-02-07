@@ -52,9 +52,9 @@ jobs:
 
 
       - name : package
-        run : mvn package
-      - name : rename
-        run : echo ${{ github.ref }}
+        run : mvn install -Dexternal.version=$(git describe --tags --always --dirty=dirty)
+      - name : check
+        run : ls target
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
