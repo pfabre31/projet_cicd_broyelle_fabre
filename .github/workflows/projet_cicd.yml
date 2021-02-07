@@ -4,5 +4,6 @@ jobs:
   compile:
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v2
       - run : sudo apt --assume-yes install maven
-      - run : mvn compile -
+      - run : mvn compile
