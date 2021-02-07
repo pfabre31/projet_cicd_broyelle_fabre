@@ -37,7 +37,7 @@ jobs:
       - run: sudo apt --assume-yes install maven
       - run : mvn package
       - run : ls target
-      - run : mv target/*.jar ./${{github.ref}}.jar
+      - run : mv target/*.jar ./app.jar
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
