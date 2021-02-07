@@ -35,9 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: sudo apt --assume-yes install maven
-      - run : mvn package
-      - run : ls target
-      - run : mv target/*.jar ./app.jar
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
@@ -52,15 +49,19 @@ jobs:
             Trying to attach jar file to release
           draft: false
           prerelease: false
-      - run : ls
+
       - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./*.jar
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
+      - run: ls
+      - run: mvn package
+      - run: ls target
+      - run: mv target/*.jar ./app.jar
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: ./*.jar
+        tag: ${{ github.ref }}
+        overwrite: true
+        file_glob: true
 
 
 
