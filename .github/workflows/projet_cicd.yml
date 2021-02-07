@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches:
-      - test_dans_ci
+      - main
 jobs:
   compile:
     runs-on: ubuntu-20.04
